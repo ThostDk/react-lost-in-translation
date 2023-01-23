@@ -1,0 +1,121 @@
+.loginNavContainer{
+    background-color: rgb(255, 166, 65);
+    padding-top: 40px;
+    padding-bottom: -400px!important;
+    margin-bottom: -400px!important;
+    
+    border-bottom: 100px solid;
+    
+    border-color: rgb(255, 255, 255);
+    
+}
+.LostInTranslationHeadlineContainer{
+    height: 300px;
+    border-top: 2px solid;
+    border-color: rgb(132, 94, 194);
+}
+.headerSmall{
+    padding-bottom: 5px;
+    margin-top: -30px;
+    font-family:cursive;
+    color: rgb(132, 94, 194);
+}
+.headline{
+
+    padding-top: 90px;
+    line-height: 60px;
+    font-family:cursive;
+    font-weight: 600;
+    font-size: 70px;
+    color: rgb(132, 94, 194);
+}
+.headlineSubtext{
+
+    font-family:cursive;
+    font-weight: 600;
+    font-size: 40px;
+    color: rgb(132, 94, 194);
+}
+.loginRobotImg{
+    width: 300px;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/009/351/639/original/paint-splatter-clipart-design-illustration-free-png.png");
+    filter: blur(1px);
+    -webkit-filter: blur(0.5px);
+    background-position: center;
+    background-position-y: 50px;
+    background-position-x: 50px;
+    position: "center";
+    background-repeat: no-repeat;
+    background-size: 250px;
+    padding-left: 100px;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    padding-right: 60px;
+    margin-left: -200px;
+    position: absolute;
+}
+.loginInputBar{
+    height:70px;
+    background-color: rgb(218, 218, 218);
+    border-radius: 350px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: rgb(160, 160, 160) !important;
+    width: 100%;
+    
+    
+}
+.loginInputBar[type=text]{
+    padding-left: 100px;
+    color: rgb(59, 59, 59);
+    font-size: xx-large;
+    font-weight: 600;
+    font-family:'Courier New', Courier, monospace
+    
+}
+
+.inputBarContainer{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-top: 500px;
+    border-color: black;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px 5px rgba(114, 114, 114, 0.644);
+    border-bottom: 30px solid;
+    
+    border-color: rgb(132, 94, 194);
+    
+    
+}
+.loginInputRowContainer{
+    margin-top:100px !important;
+    
+    margin-bottom: -100px!important;
+
+}
+.loginInputFieldImg{
+    margin-top: 8px;
+    margin-left: 30px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+.loginInputSubmitBtn{
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    margin-left: -58px;
+    position: absolute;
+    background-color: rgb(132, 94, 194) !important;
+    border-width: 0px !important;
+    
+    border-radius: 25px!important;
+}
+.loginInputSubmitBtnArrow{
+    margin-top: -15px;
+    margin-left: -14px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
