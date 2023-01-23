@@ -9,27 +9,42 @@ import Col from 'react-bootstrap/Col';
 
 
 const TranslationOutput = (props) =>{
-let translation = props.translationResponse
-//let translationArr = translation.split("");
-console.log(translation)
+console.log("outcome:" + props.translationOutput)
+let translationArray = [];
+translationArray = (props.translationOutput).split("");
 
-    
+let path = "";
+
 return (
-
-    <Container>
     
+    <Container>
+    <p>{props.translationOutput}</p>
     <Row className="translationOutputRow">
     <Col xs={2}></Col>
     <Col xs={8} className="translationOutputBox" >
     
-    <img className="handsignImg"src="./Resources/Handsigns/a.png"></img>
     
+    {translationArray.map((element, index) => {
+            if(element ===" "){
+                path = "https://cdn.icon-icons.com/icons2/1369/PNG/512/-space-bar_90666.png";
+            }
+            else{
+                path = "./Resources/Handsigns/" + element +".png";
+            }
+            return(
+            <div key={index}>
+                <img className="handsignImg"src={path}></img>
+            </div>
+            );
+            
+    })}
 
     </Col>
     <Col xs={2}></Col>
     </Row>
+    
     </Container>
-)
+       );
 }
 
 

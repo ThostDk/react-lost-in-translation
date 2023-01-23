@@ -13,8 +13,9 @@ const [translationResponse, setTranslationResponse] = useState("");
 const [input,setParagraph] = useState("")
 const handleInput = e => {
     setParagraph(e.target.value)
-    let path ="./Resources/Handsigns/"
-    console.log("blah")
+}
+const finalizeInput = () => {
+    setTranslationResponse(input)
 }
 
     
@@ -46,12 +47,12 @@ return (
         
             <img className="translationInputFieldImg" src = "https://icons.iconarchive.com/icons/icons8/ios7/512/Computer-Hardware-Keyboard-icon.png"></img>
             <input  type="text" className="translationInputBar" placeholder="Translate Text here" onChange={e => handleInput(e)}/>
-            <Button className="translationInputSubmitBtn" onClick={translate === true} ><img className="translationInputSubmitBtnArrow" src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"></img></Button>
+            <Button className="translationInputSubmitBtn" onClick={finalizeInput} ><img className="translationInputSubmitBtnArrow" src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"></img></Button>
         </Col>
     <Col xs={2}></Col>
     
     </Row>
-    {translate ?<TranslationOutput setTranslationResponse={setTranslationResponse}/> : null}
+    <TranslationOutput translationOutput={translationResponse}/>
      
     
     </Container>
