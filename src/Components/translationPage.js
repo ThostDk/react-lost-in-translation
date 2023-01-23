@@ -5,10 +5,19 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import TranslationOutput from "./translationOutput";
 
-
-
+let translate = false;
 const TranslationPage = (props) =>{
+const [translationResponse, setTranslationResponse] = useState("");    
+const [input,setParagraph] = useState("")
+const handleInput = e => {
+    setParagraph(e.target.value)
+    let path ="./Resources/Handsigns/"
+    console.log("blah")
+}
+
+    
 return (
 
     <Container fluid className="translationPageContainer">
@@ -36,19 +45,15 @@ return (
     <Col xs={8}>
         
             <img className="translationInputFieldImg" src = "https://icons.iconarchive.com/icons/icons8/ios7/512/Computer-Hardware-Keyboard-icon.png"></img>
-            <input  type="text" className="translationInputBar" placeholder="Translate Text here"/>
-            <Button className="translationInputSubmitBtn" ><img className="translationInputSubmitBtnArrow" src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"></img></Button>
+            <input  type="text" className="translationInputBar" placeholder="Translate Text here" onChange={e => handleInput(e)}/>
+            <Button className="translationInputSubmitBtn" onClick={translate === true} ><img className="translationInputSubmitBtnArrow" src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"></img></Button>
         </Col>
     <Col xs={2}></Col>
     
     </Row>
-    <Row className="translationOutputRow">
-    <Col xs={2}></Col>
-    <Col xs={8} className="translationOutputBox" >
-
-    </Col>
-    <Col xs={2}></Col>
-    </Row>
+    {translate ?<TranslationOutput setTranslationResponse={setTranslationResponse}/> : null}
+     
+    
     </Container>
 )
 }

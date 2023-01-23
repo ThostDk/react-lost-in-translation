@@ -18,9 +18,6 @@ const handleInput = e => {
 }
 const FinalizeInput = () => {
     props.setResponse(input)
-    this.setState({
-        showComponent: false,
-    }) 
 }
 return (
     
