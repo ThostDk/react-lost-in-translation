@@ -26,7 +26,7 @@ return (
     
     {translationArray.map((element, index) => {
             if(element ===" "){
-                path = "https://cdn.icon-icons.com/icons2/1369/PNG/512/-space-bar_90666.png";
+                path = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
             }
             else{
                 path = "./Resources/Handsigns/" + element +".png";
