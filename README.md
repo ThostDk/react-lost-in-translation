@@ -1,22 +1,18 @@
 # Background
-"Lost in Translation" is a assignment from the Accelerated Learning course from Noroff in Fullstack .Net developer. The Lost in Translation is an application that utilize JavaScript and React. The project is a Single Page Application focus on the front-end with React, how protect routes with authentication, Context API and working in team on Git.  
+"Lost in Translation" is an assignment from the Accelerated Learning course in Fullstack .Net developer (Noroff). The Lost in Translation is an application that utilize JavaScript and React. The project is a Single Page Application focus on the front-end with React, how protect routes with authentication, Context API and working in team on Git.  
 
 ## Description
-The application main feature is act as a "translator" from regular text to sign language. The application is able to translate English words and short sentences to American sign language. The application will illustrate the sign language in pictures.
+The main feature of the application is to act as a "translator" from regular text to sign language. The application is able to translate English words and short sentences to American sign language. The application will illustrate the sign language in pictures.
 
 The user is meet by an login page to sign in/up with username depending if the username already exist. The username will be stored to the Translation API.
 
-After given username, the user will be redirected to the translations page. The translation page will contain an input box for the English word/sentence for translation and a button for execute the translation. 
-
-The page also contain the translation box which shows the result in pictures for the American sign language. 
+After given username, the user will be redirected to the translations page. The translation page will contain an input box for the English word/sentence for translation and a button for execute the translation. The page also contain the translation box which shows the result in pictures for the American sign language. 
 
 The user have the option to go to a profile page, where a history of the latest 10 input for translations is shown. On the profile page, the user can delete the history to get a clean history. 
 ## Disclaimer
-As the application have only focus on the front-end, the application don't have database to manage API. Therefore, the application will focus on the handle and check with username, where utilize the browser's storage from local to session.
+As the application have only focus on the front-end, the application doesn't have the back-end like database to manage API. Therefore, the application will focus on the handle and check with username, where utilize the browser's storage from local to session. The same for any environment variables is not generated using any secure algorithm and the user is not given an authentication token.
 ## Components tree
-To begin the implementation of the application, there have been developed a component tree to show the pages and feature components.The component tree can be found in the ComponentTree.pdf. 
-
-As the component tree is created before any code is written and will not be updated, as it will be part of the overall grade, the application will may vary some degree from the component tree.
+To begin the implementation of the application, there have been developed a component tree to show the pages and feature components.The component tree can be found in the ComponentTree.pdf. As the component tree is created before any code is written and will not be updated, as it will be part of the overall grade, the application will may vary some degree from the component tree.
 ## Status of the Project
 The project is currently just begun development and should be completed the 28. January 2023.
 
@@ -25,7 +21,7 @@ The project is currently just begun development and should be completed the 28. 
 # Running The Project locally
 Here is a short guide to be able to run the project locally, after having cloned the project.
 ## Making the API Hosting
-There is many services and it is done similar to each other. Here is how it is done in Glitch.
+There is many services, but most of them use similar process. Here is how it is done in Glitch.
 - Login on Glitch in a browser.
 - Create new project by import from GitHub.
 - Use the following source: [noroff assignment API](https://github.com/dewald-els/noroff-assignment-api.git).
@@ -81,13 +77,9 @@ The categories:
 ## Commits
 This means the commit message should be structured as follows:
 
-    <type>[optional scope]: <description>
+    <type>: <description>
 
-    [optional body]
-
-    [optional footer(s)]
-
-where types used can be:
+where \<types> used can be:
  - fix (the correlates with PATCH in Semantic versioning)
  - feat (the correlates with MINOR in Semantic versioning)
  - docs
@@ -97,7 +89,7 @@ where types used can be:
 
 In addition, there is possible to apply the "!" as suffix of the type to indicate breaking API changes (the correlates with MAJOR in Semantic versioning).
 
-
+The \<description> should be meaningful in such a way that it solely can explain the commit.
 # React Scripts
 In the project directory, you can run:
 
