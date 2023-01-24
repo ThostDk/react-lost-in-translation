@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import LoginPage from './Components/loginPage';
-import TranslationPage from './Components/translationPage';
+import LoginPage from './views/Login'
+import TranslationPage from './views/Translation';
 import {useState} from "react"
 
 function App() {

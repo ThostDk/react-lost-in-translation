@@ -1,6 +1,6 @@
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './ComponentCSS/loginPage.css';
+import '../components/Login/LoginForm.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
