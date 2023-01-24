@@ -18,7 +18,6 @@ let path = "";
 return (
     
     <Container>
-    <p>{props.translationOutput}</p>
     <Row className="translationOutputRow">
     <Col xs={2}></Col>
     <Col xs={8} className="translationOutputBox" >

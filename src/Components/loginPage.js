@@ -47,7 +47,6 @@ return (
     <Col xs={2}></Col>
     
     <Col className="inputBarContainer"  xs={8}>
-            <p>{input}</p>
             <img className="loginInputFieldImg" src = "https://icons.iconarchive.com/icons/icons8/ios7/512/Computer-Hardware-Keyboard-icon.png"></img>
             <input  type="text" className="loginInputBar" placeholder={props.inputPlaceholder} onChange={e => handleInput(e)}/>
             <Button className="loginInputSubmitBtn" onClick={FinalizeInput} ><img className="loginInputSubmitBtnArrow" src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"></img></Button>

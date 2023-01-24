@@ -67,6 +67,7 @@
 }
 .loginInputBar[type=text]{
     padding-left: 100px;
+    padding-right: 70px;
     color: rgb(59, 59, 59);
     font-size: xx-large;
     font-weight: 600;

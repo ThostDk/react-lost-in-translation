@@ -92,6 +92,7 @@
 }
 .translationInputBar[type=text]{
     padding-left: 100px;
+    padding-right: 70px;
     color: rgb(59, 59, 59);
     font-size: xx-large;
     font-weight: 600;
@@ -109,7 +110,9 @@
     padding-top: 50px;
 }
 .translationOutputBox{
-    height: 500px;
+    min-height: 500px;
+    
+    height: auto;
     padding-top: 50px;
     padding-bottom: 50px;
     border-top: 500px;
@@ -149,5 +152,6 @@
 .handsignImg{
     float:left;
     width:50px;
+    height: 50px;
     
 }
