@@ -7,6 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./LoginForm.css";
 import { loginUser } from "../../api/User";
+import { storageSave } from "../../utils/storage";
+import { STORAGE_KEY_USER } from "../../const/storageKey";
 
 const usernameConfig = {
   required: true,
@@ -22,13 +24,20 @@ const LoginForm = () => {
   } = useForm();
   // Local State
   const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
   //Event handlers
   // submit the given username, which use destructor for getting the username
   const onSubmit = async({ username }) => {
     setLoading(true);
     const [error, userResponse] = await loginUser(username);
-    console.log("Error", error);
-    console.log("User Response", userResponse);
+    if (error!==null) {
+        setApiError(error);  
+        console.log(error);
+    }
+    if (userResponse !== null) {
+        console.log(userResponse);
+        storageSave(STORAGE_KEY_USER,userResponse);
+    }
     setLoading(false);
   };
   //Render Functions
