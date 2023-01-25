@@ -16,6 +16,7 @@ const checkForUser = async (username) => {
   }
 };
 
+
 //try to create a new user in the database with POST request
 const createUser = async (username) => {
   try {
