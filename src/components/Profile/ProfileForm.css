@@ -1,0 +1,212 @@
+.profilePageContainer{
+    background-color: rgb(255, 255, 255);
+    padding-top: 5px;
+    padding-bottom: 0px;
+    
+}
+.profileHeaderTopBarRow{
+    padding-top: 10px;
+    background-color: rgb(255, 166, 65);
+}
+.profileBody1RowContainer{
+    height: 200px;
+    background-color: rgb(255, 166, 65);
+    border-top: 1px solid;
+    border-color: rgb(132, 94, 194);
+}
+
+.translationPageHeaderSmall{
+    
+    padding-bottom: 5px;
+    margin-top: 15px;
+    font-family:cursive;
+    color: rgb(132, 94, 194);
+}
+.headlineSubtext{
+
+    font-family:cursive;
+    font-weight: 600;
+    font-size: 40px;
+    color: rgb(132, 94, 194);
+}
+.robotLogoImgColOverride{
+    width: 5%;
+}
+.robotLogoImg{
+    width: 50px;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/009/351/639/original/paint-splatter-clipart-design-illustration-free-png.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    filter: blur(1px);
+    -webkit-filter: blur(0.5px);
+}
+.profileCol{
+    margin-left: 4%;
+}
+.profileIcon{
+    position: relative;
+    z-index: 1;
+    width: 50px;
+    float: right;
+    cursor: pointer;
+}
+.profileName{
+  pointer-events: none;  
+  color: white;
+  font-size: medium;
+  height: 50px;
+  float: right;
+  border-radius: 25px;
+  background-color: rgba(128, 128, 128, 0.26);
+  padding-left: 20px;
+  padding-right: 60px;
+  padding-top: 12px;
+  margin-right: -50px;
+}
+.profileLogOut{
+
+  color: rgb(255, 255, 255);
+  font-size: medium;
+  text-shadow: 0px 1px #6b6b6b;
+  font-weight: 800;
+  height: 50px;
+  float: right;
+  border-radius: 25px;
+  background-color: rgba(128, 128, 128, 0.26);
+  padding-left: 60px;
+  padding-right: 20px;
+  padding-top: 12px;
+  margin-right: -230px;
+}
+.profileLogOut:hover{
+    color: rgb(105, 105, 105);
+    text-shadow: 2px 2px 2px #ff0000;
+    cursor: pointer;
+}
+.paintBackgroundImg{
+    margin-top: -15px;
+    margin-left: -px;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+}
+.inputRowContainer{
+    padding-top: 60px;
+    border-top: 2px solid;
+    border-bottom: 0px solid;
+    border-color: gray;
+}
+.translationInputBar{
+    
+    height:70px;
+    background-color: rgb(218, 218, 218);
+    border-radius: 350px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255) !important;
+    width: 100%;
+    
+    
+}
+.translationInputBar[type=text]{
+    padding-left: 100px;
+    padding-right: 70px;
+    color: rgb(59, 59, 59);
+    font-size: xx-large;
+    font-weight: 600;
+    font-family:'Courier New', Courier, monospace
+    
+}
+
+
+.translationOutputRow{
+    padding-top: 50px;
+}
+.translationHistoryBox{
+    min-height: 300px;
+    
+    height: auto;
+    margin-top: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-top: 500px;
+    border-color: black;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px 5px rgba(114, 114, 114, 0.644);
+    border-top: 55px solid;
+    
+    border-color: rgb(132, 94, 194);
+}
+.translationHistoryText{
+    margin-top: -95px;
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    font-size-adjust: inherit;
+    font-weight: 600;
+    font-family:'Courier New', Courier, monospace;
+    
+}
+.goTotranslationBtn{
+    width: 50px;
+    float: right;
+    height: 50px;
+    width: 50px;
+    background-color: rgb(132, 94, 194) !important;
+    border-width: 0px !important;
+    border-radius: 25px!important;
+}
+.goTotranslationTextField{
+    color: rgb(132, 94, 194);
+    font-size: medium;
+    font-weight: 800;
+    height: 50px;
+    border-radius: 25px;
+    background-color: rgba(128, 128, 128, 0.26);
+    padding-left: 20px;
+    font-family:'Courier New', Courier, monospace;
+    padding-top: 12px;
+    margin-right: -50px;
+    width: 100%;
+    text-align: left;
+    float: left !important;
+    max-width:inherit !important;
+    overflow:hidden;
+    
+}
+.translationInputFieldImg{
+    margin-top: 8px;
+    margin-left: 30px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+.translationInputSubmitBtn{
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    margin-left: -58px;
+    position: absolute;
+    background-color: rgb(132, 94, 194) !important;
+    border-width: 0px !important;
+    
+    border-radius: 25px!important;
+}
+.translationInputSubmitBtnArrow{
+    margin-top: -15px;
+    margin-left: -14px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+.handsignImg{
+    float:left;
+    width:50px;
+    height: 50px;
+    
+}
