@@ -48,26 +48,6 @@ const LoginForm = () => {
     }
   })();
   return (
-    <>
-      <h2>What's your name?</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <fieldset>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            placeholder="john doe"
-            {...register("username", usernameConfig)}
-          />
-          {errorMessage}
-        </fieldset>
-        <button type="submit" disabled={loading}>
-          Continue
-        </button>
-        {loading && <p>loading...</p>}
-      </form>
-    </>
-  );
-  /*return (
     <Container fluid className="loginNavContainer">
       <Row>
         <Col xs={2}></Col>
@@ -124,7 +104,7 @@ const LoginForm = () => {
         <Col xs={12}></Col>
       </Row>
     </Container>
-  );*/
+  );
 };
 
 export default LoginForm;
