@@ -6,9 +6,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TranslationOutput from "./translationOutput";
-import TranslationPage from './Translation';
+import Translation from './Translation';
 
-const ProfilePage = (props) =>{
+const Profile = (props) =>{
 const [showLogoutMenu,setLogoutMenuBool] = useState(false);
 const [translationText,setToClickedTranlation] = useState("")
 
@@ -29,7 +29,7 @@ const goToTranslation = (translation) =>{
     
     return (
         <div>
-            <TranslationPage profileName ={props.profileName}/>
+            <Translation profileName ={props.profileName}/>
             <TranslationOutput translation = {translation}/>
             {console.log(translation)}
         </div>
@@ -99,4 +99,4 @@ return (
 
 
 
-export default ProfilePage
+export default Profile
