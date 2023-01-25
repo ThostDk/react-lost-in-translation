@@ -24,7 +24,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   //Event handlers
   // submit the given username, which use destructor for getting the username
-  const onSubmit = async ({ username }) => {
+  const onSubmit = async({ username }) => {
     setLoading(true);
     const [error, userResponse] = await loginUser(username);
     console.log("Error", error);
