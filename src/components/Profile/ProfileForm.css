@@ -49,11 +49,14 @@
     margin-left: 4%;
 }
 .profileIcon{
+    position: relative;
+    z-index: 1;
     width: 50px;
     float: right;
+    cursor: pointer;
 }
 .profileName{
-
+  pointer-events: none;  
   color: white;
   font-size: medium;
   height: 50px;
@@ -66,7 +69,8 @@
   margin-right: -50px;
 }
 .profileLogOut{
-    color: rgb(255, 255, 255);
+
+  color: rgb(255, 255, 255);
   font-size: medium;
   text-shadow: 0px 1px #6b6b6b;
   font-weight: 800;
@@ -78,6 +82,11 @@
   padding-right: 20px;
   padding-top: 12px;
   margin-right: -230px;
+}
+.profileLogOut:hover{
+    color: rgb(105, 105, 105);
+    text-shadow: 2px 2px 2px #ff0000;
+    cursor: pointer;
 }
 .paintBackgroundImg{
     margin-top: -15px;
