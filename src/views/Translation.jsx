@@ -7,8 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TranslationOutput from "./translationOutput";
 
-let translate = false;
-const TranslationPage = (props) =>{
+
+const Translation = (props) =>{
 const [translationResponse, setTranslationResponse] = useState("");    
 const [input,setParagraph] = useState("")
 const handleInput = e => {
@@ -63,4 +63,4 @@ return (
 
 
 
-export default TranslationPage
+export default Translation

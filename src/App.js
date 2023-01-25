@@ -1,17 +1,23 @@
-import './App.css';
-import LoginPage from './views/Login'
-import TranslationPage from './views/Translation';
-import {useState} from "react"
+import "./App.css";
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./views/Login";
+import Translation from "./views/Translation";
+import Profile from "./views/Profile";
 
 function App() {
   const [response, setResponse] = useState("");
 
   return (
-    <div className="App">
-      
-      {response === "" ?<LoginPage setResponse={setResponse} inputPlaceholder="What's your name?"/>:<TranslationPage profileName ={response}/>}
-  
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/translator" element={<Translation />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
