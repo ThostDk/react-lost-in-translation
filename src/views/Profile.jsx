@@ -1,6 +1,6 @@
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import '../components/Profile/ProfileForm.css'
+import '../components/Profile/ProfileForm.css'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -25,14 +25,9 @@ let translationHistory =["Lasse er tarvelig","To Be or not To be... why is that 
 const goToTranslation = (translation) =>{
     
     setToClickedTranlation(translation)
-    console.log("yay");
-    
+        
     return (
-        <div>
-            <Translation profileName ={props.profileName}/>
-            <TranslationOutput translation = {translation}/>
-            {console.log(translation)}
-        </div>
+            <TranslationOutput translation = {translationText}/>
     )
     
 }
