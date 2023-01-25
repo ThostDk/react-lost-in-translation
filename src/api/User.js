@@ -24,15 +24,16 @@ const createUser = async (username) => {
       headers: createHeaders(),
       body: JSON.stringify({
         username,
-        order: [],
-      }),
+        translations: [],
+      })
     });
     if (!response.ok) {
       throw new Error("Could not create user with given username " + username);
     }
     const data = await response.json();
     return [null, data];
-  } catch (error) {
+  } 
+  catch (error) {
     return [error.message, []];
   }
 };
@@ -44,7 +45,7 @@ export const loginUser = async (username) => {
     return [checkError, null];
   }
 
-  if (user.length === 0) {
+  if (user.length > 0) {
     return [null, user.pop()];
   }
 
