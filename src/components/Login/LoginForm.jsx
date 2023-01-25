@@ -1,27 +1,35 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./LoginForm.css";
+import { loginUser } from "../../api/User";
 
 const usernameConfig = {
   required: true,
   minLength: 4,
 };
 
-const LoginForm = ( ) => {
+const LoginForm = () => {
   //hooks
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  // Local State
+  const [loading, setLoading] = useState(false);
   //Event handlers
-  const onSubmit = (data) => {
-    console.log(data);
+  // submit the given username, which use destructor for getting the username
+  const onSubmit = async({ username }) => {
+    setLoading(true);
+    const [error, userResponse] = await loginUser(username);
+    console.log("Error", error);
+    console.log("User Response", userResponse);
+    setLoading(false);
   };
   //Render Functions
   const errorMessage = (() => {
@@ -34,11 +42,32 @@ const LoginForm = ( ) => {
     }
 
     if (errors.username.type === "minLength") {
-      return <span className="userValidation">Username is too short(min. 4)!!!</span>;
+      return (
+        <span className="userValidation">Username is too short(min. 4)!!!</span>
+      );
     }
   })();
-
   return (
+    <>
+      <h2>What's your name?</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <fieldset>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            placeholder="john doe"
+            {...register("username", usernameConfig)}
+          />
+          {errorMessage}
+        </fieldset>
+        <button type="submit" disabled={loading}>
+          Continue
+        </button>
+        {loading && <p>loading...</p>}
+      </form>
+    </>
+  );
+  /*return (
     <Container fluid className="loginNavContainer">
       <Row>
         <Col xs={2}></Col>
@@ -69,32 +98,33 @@ const LoginForm = ( ) => {
 
         <Col className="inputBarContainer" xs={8}>
           <form onSubmit={handleSubmit(onSubmit)}>
-          <img
-            alt="Icon for Input field"
-            className="loginInputFieldImg"
-            src="https://icons.iconarchive.com/icons/icons8/ios7/512/Computer-Hardware-Keyboard-icon.png"
-          ></img>
-          <input
-            type="text"
-            className="loginInputBar"
-            placeholder="What is your username?"
-            {...register("username", usernameConfig)}
-          />
-          {errorMessage}
-          <Button type="submit" className="loginInputSubmitBtn" >
             <img
-              alt="Icon for Login button"
-              className="loginInputSubmitBtnArrow"
-              src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"
+              alt="Icon for Input field"
+              className="loginInputFieldImg"
+              src="https://icons.iconarchive.com/icons/icons8/ios7/512/Computer-Hardware-Keyboard-icon.png"
             ></img>
-          </Button>
+            <label htmlFor="username"></label>
+            <input
+              type="text"
+              className="loginInputBar"
+              placeholder="What is your username?"
+              {...register("username", usernameConfig)}
+            />
+            {errorMessage}
+            <Button type="submit" disabled={ loading } className="loginInputSubmitBtn">
+              <img
+                alt="Icon for Login button"
+                className="loginInputSubmitBtnArrow"
+                src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"
+              ></img>
+            </Button>
           </form>
         </Col>
         <Col xs={2}></Col>
         <Col xs={12}></Col>
       </Row>
     </Container>
-  );
+  );*/
 };
 
 export default LoginForm;
