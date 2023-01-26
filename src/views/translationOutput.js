@@ -32,7 +32,7 @@ return (
             }
             return(
             <div key={index}>
-                <img className="handsignImg"src={path}></img>
+                <img className="handsignImg" alt="" src={path}></img>
             </div>
             );
             
