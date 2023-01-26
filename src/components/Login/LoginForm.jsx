@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -11,7 +10,7 @@ import { loginUser } from "../../api/User";
 import { storageSave } from "../../utils/storage";
 import { STORAGE_KEY_USER } from "../../const/storageKey";
 import { useUser } from "../../context/UserContext";
-
+import { useNavigate } from "react-router-dom";
 
 const usernameConfig = {
   required: true,
