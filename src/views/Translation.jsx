@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TranslationOutput from "./translationOutput";
+import withAuth from "../hoc/withAuth";
 
 
 const Translation = (props) =>{
@@ -59,8 +60,4 @@ return (
 )
 }
 
-
-
-
-
-export default Translation
+export default withAuth(Translation)

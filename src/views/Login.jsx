@@ -1,9 +1,10 @@
 import LoginForm from "../components/Login/LoginForm";
 
 const Login = () => {
+  const onSuccess = () => {};
   return (
     <>
-      <LoginForm />
+      <LoginForm success={onSuccess} />
     </>
   );
 };

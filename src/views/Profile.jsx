@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TranslationOutput from "./translationOutput";
 import Translation from './Translation';
+import withAuth from "../hoc/withAuth";
 
 const Profile = (props) =>{
 const [showLogoutMenu,setLogoutMenuBool] = useState(false);
@@ -95,8 +96,4 @@ return (
 )
 }
 
-
-
-
-
-export default Profile
+export default withAuth(Profile)
