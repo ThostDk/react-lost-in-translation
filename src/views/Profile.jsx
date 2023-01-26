@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
-import { withAuth } from "../hoc/withAuth";
+import withAuth from "../hoc/withAuth";
 
 const Profile = (props) => {
   const [showLogoutMenu, setLogoutMenuBool] = useState(false);
