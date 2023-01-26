@@ -17,7 +17,7 @@ import withAuth from "../hoc/withAuth";
 const Profile = (props) => {
   const [showLogoutMenu, setLogoutMenuBool] = useState(false);
   const [translationText, setToClickedTranlation] = useState("");
-  const { setUser } = useUser();
+  const {user} = useUser();
 
   const showLogout = () => {
     return showLogoutMenu ? setLogoutMenuBool(false) : setLogoutMenuBool(true);
@@ -25,7 +25,7 @@ const Profile = (props) => {
   const handleLogOut = () => {
     if (window.confirm("Are you sure you want to logout?")) {
       storageSave(STORAGE_KEY_USER, null);
-      setUser(null);
+      user(null);
     }
   };
   //TODO: get translation history from API
@@ -77,7 +77,7 @@ const Profile = (props) => {
             src="https://icons-for-free.com/iconfiles/png/512/circle+face+human+profile+user+icon-1320086209603424640.png"
           ></img>
 
-          <h4 className="profileName">{props.profileName}</h4>
+          <h4 className="profileName">{user.username}</h4>
           {showLogoutMenu ? (
             <h4 onClick={handleLogOut} className="profileLogOut">
               Log Out
