@@ -104,11 +104,17 @@ const Profile = (props) => {
                       </Button>
                     </NavLink>
                     <h4 className="goTotranslationTextField">{element}</h4>
+                 
                   </Col>
                 </Row>
               </div>
             );
           })}
+          <Row>
+          <Col xs={12}>
+                    <Button className="clearHistoryBtn">CLEAR HISTORY</Button>
+                  </Col>
+          </Row>
         </Col>
         <Col xs={2}></Col>
       </Row>

@@ -209,3 +209,8 @@
     height: 50px;
     
 }
+.clearHistoryBtn{
+    background-color: rgb(132, 94, 194);
+    width: 100%;
+    border-width: 0px !important;
+}
