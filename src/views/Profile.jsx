@@ -30,9 +30,12 @@ const Profile = (props) => {
   };
   //get translation history from API
   let translationHistory = user.translations;
-  
+
   const goToTranslation = async (translation) => {
-    const [error, UpdatedUser] = await selectedtranslationAdd(user, translation);
+    const [error, UpdatedUser] = await selectedtranslationAdd(
+      user,
+      translation
+    );
     if (error !== null) {
       return;
     }
@@ -62,17 +65,19 @@ const Profile = (props) => {
             alt="profileImg"
             src="https://icons-for-free.com/iconfiles/png/512/circle+face+human+profile+user+icon-1320086209603424640.png"
           ></img>
-
-          <h4 className="profileName">{user.username}</h4>
           {showLogoutMenu ? (
             <h4 onClick={handleLogOut} className="profileLogOut">
               Log Out
             </h4>
           ) : (
-            ""
+            <h4 className="profileName">{user.username}</h4>
           )}
+          
+          
         </Col>
-        <Col xs={2}></Col>
+        <Col xs={2}>
+        
+        </Col>
       </Row>
 
       <Row className="profileBody1RowContainer">
