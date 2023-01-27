@@ -25,28 +25,27 @@ const Profile = (props) => {
     if (window.confirm("Are you sure you want to logout?")) {
       storageSave(STORAGE_KEY_USER, null);
       setUser(null);
-      
     }
   };
   //get translation history from API
   let translationHistory = user.translations;
-  
+
   const clearTranslationHistory = async () => {
     if (!window.confirm("Are you sure? \nThis can not be undone!")) {
-    return
+      return;
     }
-    const [ clearError] = await translationClearHistory(user.id)
+    const [clearError] = await translationClearHistory(user.id);
     if (clearError !== null) {
-        return
+      return;
     }
     const updatedUser = {
-        ...user,
-        translations: []
-    }
-    storageSave(STORAGE_KEY_USER, updatedUser)
-    setUser(updatedUser)
-    }
-  
+      ...user,
+      translations: [],
+    };
+    storageSave(STORAGE_KEY_USER, updatedUser);
+    setUser(updatedUser);
+  };
+
   const goToTranslation = async (translation) => {
     const [error, UpdatedUser] = await selectedTranslationAdd(
       user,
@@ -88,12 +87,8 @@ const Profile = (props) => {
           ) : (
             <h4 className="profileName">{user.username}</h4>
           )}
-          
-          
         </Col>
-        <Col xs={2}>
-        
-        </Col>
+        <Col xs={2}></Col>
       </Row>
 
       <Row className="profileBody1RowContainer">
@@ -120,16 +115,25 @@ const Profile = (props) => {
                       </Button>
                     </NavLink>
                     <h4 className="goTotranslationTextField">{element}</h4>
-                 
                   </Col>
                 </Row>
               </div>
             );
           })}
           <Row>
-          <Col xs={12}>
-                    <Button className="clearHistoryBtn" onClick={clearTranslationHistory}>CLEAR HISTORY</Button>
-                  </Col>
+            <Col xs={6}>
+              <NavLink to="/translator">
+                <Button className="goToTranslationBtn">Go to Translation</Button>
+              </NavLink>
+            </Col>
+            <Col xs={6}>
+              <Button
+                className="clearHistoryBtn"
+                onClick={clearTranslationHistory}
+              >
+                CLEAR HISTORY
+              </Button>
+            </Col>
           </Row>
         </Col>
         <Col xs={2}></Col>

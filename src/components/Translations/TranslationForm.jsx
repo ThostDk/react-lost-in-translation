@@ -8,7 +8,8 @@ import { useUser } from "../../context/UserContext";
 const TranslationOutput = (props) => {
   const { user } = useUser();
   let translationArray = [];
-  translationArray = props.translationOutput.split("");
+  translationArray = props.translationOutput.toLowerCase().split("");
+  
   
   
   let path = "";
@@ -18,12 +19,16 @@ const TranslationOutput = (props) => {
       <Row className="translationOutputRow">
         <Col xs={2}></Col>
         <Col xs={8} className="translationOutputBox">
-          {translationArray.map((element, index) => {
-            if (element === " ") {
+          {translationArray.map((letter, index) => {
+            if (letter === " ") {
               path =
                 "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
-            } else {
-              path = "./Resources/Handsigns/" + element + ".png";
+            }
+            else if(letter.match(/[a-z1-9]/i)){
+              path = "./Resources/Handsigns/" + letter + ".png";
+            }
+            else{
+               path = "./Resources/Handsigns/!.png";
             }
             return (
               <div key={index}>
