@@ -7,13 +7,13 @@ const apiURL = process.env.REACT_APP_API_URL;
 // DELETE - delete an existing record
 // PUT - update parts in an existing record
 
-export const translationAdd = async (user, translations) => {
+export const translationAdd = async (user, sentence) => {
   try {
     const response = await fetch(`${apiURL}/${user.id}`, {
       method: "PATCH",
-      Header: createHeaders(),
+      headers: createHeaders(),
       body: JSON.stringify({
-        translations: [...user.translations, translations]
+        translations: [...user.translations, sentence]
       }),
     });
     if (!response.ok) {
