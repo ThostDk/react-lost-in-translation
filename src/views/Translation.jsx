@@ -4,14 +4,14 @@ import "../components/Translations/TranslationForm.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import TranslationOutput from "../components/Translations/TranslationForm";
+import TranslationOutput from "../components/Translations/TranslationOutput";
 import withAuth from "../hoc/withAuth";
 import { useUser } from "../context/UserContext";
 import { NavLink } from "react-router-dom";
 import { translationAdd } from "../api/Translate";
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
-import OrdersForm from "../components/Translations/OrderForm";
+import OrdersForm from "../components/Translations/TranslationForm";
 
 const Translation = () => {
   const [translationResponse, setTranslationResponse] = useState("");
