@@ -160,6 +160,9 @@
     border-width: 0px !important;
     border-radius: 25px!important;
 }
+.goTotranslationBtn:hover{
+    background-color: rgb(255, 166, 65) !important;
+}
 .goTotranslationTextField{
     color: rgb(132, 94, 194);
     font-size: medium;
@@ -210,7 +213,18 @@
     
 }
 .clearHistoryBtn{
-    background-color: rgb(132, 94, 194);
+    background-color: rgb(194, 94, 94);
     width: 100%;
     border-width: 0px !important;
+}
+.clearHistoryBtn:hover{
+    background-color: rgb(255, 0, 0);
+}
+.goToTranslationBtn{
+    background-color: rgb(111, 194, 94);
+    width: 100%;
+    border-width: 0px !important;
+}
+.goToTranslationBtn:hover{
+    background-color: rgb(43, 255, 0);
 }

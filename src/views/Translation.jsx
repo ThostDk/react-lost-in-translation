@@ -9,16 +9,16 @@ import withAuth from "../hoc/withAuth";
 import { useUser } from "../context/UserContext";
 import { NavLink } from "react-router-dom";
 import { translationAdd } from "../api/Translate";
-import { selectedtranslationAdd } from "../api/Translate";
+import { selectedTranslationAdd } from "../api/Translate";
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
-import OrdersForm from "../components/Translations/TranslationForm";
+import TranslationForm from "../components/Translations/TranslationForm";
 
 const Translation = () => {
   const [translationResponse, setTranslationResponse] = useState("");
   const { user, setUser } = useUser();
   const resetSelection = async()=>{
-    const [error, UpdatedUser] = await selectedtranslationAdd(user, "");
+    const [error, UpdatedUser] = await selectedTranslationAdd(user, "");
       if (error !== null) {
         return;
       }
@@ -77,7 +77,7 @@ const Translation = () => {
         <Col xs={2}></Col>
 
         <Col xs={8}>
-          <OrdersForm onTranslate={handleTranslatorClicked} />
+          <TranslationForm onTranslate={handleTranslatorClicked} />
         </Col>
         <Col xs={2}></Col>
       </Row>

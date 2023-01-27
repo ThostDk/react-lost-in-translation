@@ -5,18 +5,17 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import TranslationOutput from "../components/Translations/TranslationForm";
-import Translation from "./Translation";
+
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../context/UserContext";
-import { storageSave } from "../utils/storage";
+import { storageDelete, storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
 import withAuth from "../hoc/withAuth";
-import { selectedtranslationAdd } from "../api/Translate";
+import { selectedTranslationAdd } from "../api/Translate";
+import { translationClearHistory } from "../api/Translate";
 const Profile = (props) => {
   const [showLogoutMenu, setLogoutMenuBool] = useState(false);
-  const [translationText, setToClickedTranlation] = useState("");
   const { user, setUser } = useUser();
 
   const showLogout = () => {
@@ -25,14 +24,30 @@ const Profile = (props) => {
   const handleLogOut = () => {
     if (window.confirm("Are you sure you want to logout?")) {
       storageSave(STORAGE_KEY_USER, null);
-      user(null);
+      setUser(null);
     }
   };
   //get translation history from API
   let translationHistory = user.translations;
 
+  const clearTranslationHistory = async () => {
+    if (!window.confirm("Are you sure? \nThis can not be undone!")) {
+      return;
+    }
+    const [clearError] = await translationClearHistory(user.id);
+    if (clearError !== null) {
+      return;
+    }
+    const updatedUser = {
+      ...user,
+      translations: [],
+    };
+    storageSave(STORAGE_KEY_USER, updatedUser);
+    setUser(updatedUser);
+  };
+
   const goToTranslation = async (translation) => {
-    const [error, UpdatedUser] = await selectedtranslationAdd(
+    const [error, UpdatedUser] = await selectedTranslationAdd(
       user,
       translation
     );
@@ -72,12 +87,8 @@ const Profile = (props) => {
           ) : (
             <h4 className="profileName">{user.username}</h4>
           )}
-          
-          
         </Col>
-        <Col xs={2}>
-        
-        </Col>
+        <Col xs={2}></Col>
       </Row>
 
       <Row className="profileBody1RowContainer">
@@ -104,16 +115,25 @@ const Profile = (props) => {
                       </Button>
                     </NavLink>
                     <h4 className="goTotranslationTextField">{element}</h4>
-                 
                   </Col>
                 </Row>
               </div>
             );
           })}
           <Row>
-          <Col xs={12}>
-                    <Button className="clearHistoryBtn">CLEAR HISTORY</Button>
-                  </Col>
+            <Col xs={6}>
+              <NavLink to="/translator">
+                <Button className="goToTranslationBtn">Go to Translation</Button>
+              </NavLink>
+            </Col>
+            <Col xs={6}>
+              <Button
+                className="clearHistoryBtn"
+                onClick={clearTranslationHistory}
+              >
+                CLEAR HISTORY
+              </Button>
+            </Col>
           </Row>
         </Col>
         <Col xs={2}></Col>

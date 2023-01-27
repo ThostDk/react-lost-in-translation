@@ -25,7 +25,7 @@ export const translationAdd = async (user, sentence) => {
     return [error.message, null];
   }
 };
-export const selectedtranslationAdd = async (user, selectedHistorySentence) => {
+export const selectedTranslationAdd = async (user, selectedHistorySentence) => {
   try {
     const response = await fetch(`${apiURL}/${user.id}`, {
       method: "PATCH",
