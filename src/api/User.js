@@ -26,6 +26,7 @@ const createUser = async (username) => {
       body: JSON.stringify({
         username,
         translations: [],
+        selectedTranslation: ""
       })
     });
     if (!response.ok) {

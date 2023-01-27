@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/Translations/TranslationForm.css";
 import Container from "react-bootstrap/Container";
@@ -9,13 +9,30 @@ import withAuth from "../hoc/withAuth";
 import { useUser } from "../context/UserContext";
 import { NavLink } from "react-router-dom";
 import { translationAdd } from "../api/Translate";
+import { selectedtranslationAdd } from "../api/Translate";
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
 import OrdersForm from "../components/Translations/OrderForm";
-
 const Translation = () => {
   const [translationResponse, setTranslationResponse] = useState("");
   const { user, setUser } = useUser();
+  const resetSelection = async()=>{
+    const [error, UpdatedUser] = await selectedtranslationAdd(user, "");
+      if (error !== null) {
+        return;
+      }
+      storageSave(STORAGE_KEY_USER, UpdatedUser);
+      setUser(UpdatedUser);
+  }
+  const getSelectedTranslationHistory = async (user) => {
+    if (user.selectedTranslation !== "") {
+      setTranslationResponse(user.selectedTranslation);
+      resetSelection();
+    }
+  };
+  useEffect(() => {
+    getSelectedTranslationHistory(user);
+  });
 
   const handleTranslatorClicked = async (sentence) => {
     setTranslationResponse(sentence);
@@ -59,7 +76,7 @@ const Translation = () => {
         <Col xs={2}></Col>
 
         <Col xs={8}>
-            <OrdersForm onTranslate={handleTranslatorClicked} />
+          <OrdersForm onTranslate={handleTranslatorClicked} />
         </Col>
         <Col xs={2}></Col>
       </Row>

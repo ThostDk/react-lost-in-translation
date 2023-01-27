@@ -13,11 +13,11 @@ import { useUser } from "../context/UserContext";
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
 import withAuth from "../hoc/withAuth";
-
+import { selectedtranslationAdd } from "../api/Translate";
 const Profile = (props) => {
   const [showLogoutMenu, setLogoutMenuBool] = useState(false);
   const [translationText, setToClickedTranlation] = useState("");
-  const {user} = useUser();
+  const { user, setUser } = useUser();
 
   const showLogout = () => {
     return showLogoutMenu ? setLogoutMenuBool(false) : setLogoutMenuBool(true);
@@ -28,30 +28,16 @@ const Profile = (props) => {
       user(null);
     }
   };
-  //TODO: get translation history from API
-  let translationHistory = [
-    "Lasse er tarvelig",
-    "To Be or not To be... why is that a question?",
-    "What is the meaning of life?",
-    "Should i fear my own shadow?",
-    "can a car run on pepsi?",
-    "Is the earth triangular?",
-    "Is gravity even real?",
-    "How best to get rid of a corpse in minecraft",
-    "Was 9/11 done by aliens?",
-    "does looking into the screen give you square shaped eyes?",
-    "Should we sniff our own farts to save the climate?",
-  ];
-
-  const goToTranslation = (translation) => {
-    //const {user} = useUser();
-    setToClickedTranlation(translation);
-    console.log("moving to translator");
-
-    return (
-      //user.trans
-      <div></div>
-    );
+  //get translation history from API
+  let translationHistory = user.translations;
+  
+  const goToTranslation = async (translation) => {
+    const [error, UpdatedUser] = await selectedtranslationAdd(user, translation);
+    if (error !== null) {
+      return;
+    }
+    storageSave(STORAGE_KEY_USER, UpdatedUser);
+    setUser(UpdatedUser);
   };
 
   return (
