@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./TranslationForm.css";
 
-const OrdersForm = ({ onTranslate }) => {
+const TranslationForm = ({ onTranslate }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = ({ TranslateSentence }) => {
@@ -32,4 +34,4 @@ const OrdersForm = ({ onTranslate }) => {
   );
 };
 
-export default OrdersForm;
+export default TranslationForm;

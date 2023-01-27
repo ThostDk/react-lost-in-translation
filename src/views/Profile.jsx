@@ -13,11 +13,11 @@ import { useUser } from "../context/UserContext";
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
 import withAuth from "../hoc/withAuth";
-
+import { selectedtranslationAdd } from "../api/Translate";
 const Profile = (props) => {
   const [showLogoutMenu, setLogoutMenuBool] = useState(false);
   const [translationText, setToClickedTranlation] = useState("");
-  const {user} = useUser();
+  const { user, setUser } = useUser();
 
   const showLogout = () => {
     return showLogoutMenu ? setLogoutMenuBool(false) : setLogoutMenuBool(true);
@@ -28,30 +28,19 @@ const Profile = (props) => {
       user(null);
     }
   };
-  //TODO: get translation history from API
-  let translationHistory = [
-    "Lasse er tarvelig",
-    "To Be or not To be... why is that a question?",
-    "What is the meaning of life?",
-    "Should i fear my own shadow?",
-    "can a car run on pepsi?",
-    "Is the earth triangular?",
-    "Is gravity even real?",
-    "How best to get rid of a corpse in minecraft",
-    "Was 9/11 done by aliens?",
-    "does looking into the screen give you square shaped eyes?",
-    "Should we sniff our own farts to save the climate?",
-  ];
+  //get translation history from API
+  let translationHistory = user.translations;
 
-  const goToTranslation = (translation) => {
-    //const {user} = useUser();
-    setToClickedTranlation(translation);
-    console.log("moving to translator");
-
-    return (
-      //user.trans
-      <div></div>
+  const goToTranslation = async (translation) => {
+    const [error, UpdatedUser] = await selectedtranslationAdd(
+      user,
+      translation
     );
+    if (error !== null) {
+      return;
+    }
+    storageSave(STORAGE_KEY_USER, UpdatedUser);
+    setUser(UpdatedUser);
   };
 
   return (
@@ -76,17 +65,19 @@ const Profile = (props) => {
             alt="profileImg"
             src="https://icons-for-free.com/iconfiles/png/512/circle+face+human+profile+user+icon-1320086209603424640.png"
           ></img>
-
-          <h4 className="profileName">{user.username}</h4>
           {showLogoutMenu ? (
             <h4 onClick={handleLogOut} className="profileLogOut">
               Log Out
             </h4>
           ) : (
-            ""
+            <h4 className="profileName">{user.username}</h4>
           )}
+          
+          
         </Col>
-        <Col xs={2}></Col>
+        <Col xs={2}>
+        
+        </Col>
       </Row>
 
       <Row className="profileBody1RowContainer">
@@ -113,11 +104,17 @@ const Profile = (props) => {
                       </Button>
                     </NavLink>
                     <h4 className="goTotranslationTextField">{element}</h4>
+                 
                   </Col>
                 </Row>
               </div>
             );
           })}
+          <Row>
+          <Col xs={12}>
+                    <Button className="clearHistoryBtn">CLEAR HISTORY</Button>
+                  </Col>
+          </Row>
         </Col>
         <Col xs={2}></Col>
       </Row>

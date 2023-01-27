@@ -25,7 +25,24 @@ export const translationAdd = async (user, sentence) => {
     return [error.message, null];
   }
 };
-
+export const selectedtranslationAdd = async (user, selectedHistorySentence) => {
+  try {
+    const response = await fetch(`${apiURL}/${user.id}`, {
+      method: "PATCH",
+      headers: createHeaders(),
+      body: JSON.stringify({
+        selectedTranslation: selectedHistorySentence
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("could not update the order");
+    }
+    const result = await response.json();
+    return [null, result];
+  } catch (error) {
+    return [error.message, null];
+  }
+};
 export const translationClearHistory = async (userId) => {
   try {
     const response = await fetch(`${apiURL}/${userId}`, {
