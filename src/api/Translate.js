@@ -1,4 +1,3 @@
-
 import { createHeaders } from "./Index";
 const apiURL = process.env.REACT_APP_API_URL;
 // POST - create a new record
@@ -6,14 +5,21 @@ const apiURL = process.env.REACT_APP_API_URL;
 // GET - retrieve an existing record
 // DELETE - delete an existing record
 // PUT - update parts in an existing record
-
+const shiftArray = (user, payload) =>{
+  let tmpArr = user.translations;
+  tmpArr.shift();
+  console.log("tmpArr:"+tmpArr)
+  console.log("payload:"+payload)
+  tmpArr.push(payload);
+   return tmpArr;
+}
 export const translationAdd = async (user, sentence) => {
   try {
     const response = await fetch(`${apiURL}/${user.id}`, {
       method: "PATCH",
       headers: createHeaders(),
       body: JSON.stringify({
-        translations: [...user.translations, sentence]
+      translations: user.translations.length < 10 ?  [...user.translations, sentence] : shiftArray(user,sentence)
       }),
     });
     if (!response.ok) {
