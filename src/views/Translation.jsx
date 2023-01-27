@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/Translations/TranslationForm.css";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,17 +8,23 @@ import TranslationOutput from "../components/Translations/TranslationForm";
 import withAuth from "../hoc/withAuth";
 import { useUser } from "../context/UserContext";
 import { NavLink } from "react-router-dom";
+import { translationAdd } from "../api/Translate";
+import { storageSave } from "../utils/storage";
+import { STORAGE_KEY_USER } from "../const/storageKey";
+import OrdersForm from "../components/Translations/OrderForm";
 
-const Translation = ( ) => {
-  const { user } = useUser();
-
+const Translation = () => {
   const [translationResponse, setTranslationResponse] = useState("");
-  const [input, setParagraph] = useState("");
-  const handleInput = (e) => {
-    setParagraph(e.target.value);
-  };
-  const finalizeInput = () => {
-    setTranslationResponse(input);
+  const { user, setUser } = useUser();
+
+  const handleTranslatorClicked = async (sentence) => {
+    setTranslationResponse(sentence);
+    const [error, UpdatedUser] = await translationAdd(user, sentence);
+    if (error !== null) {
+      return;
+    }
+    storageSave(STORAGE_KEY_USER, UpdatedUser);
+    setUser(UpdatedUser);
   };
 
   return (
@@ -38,12 +43,12 @@ const Translation = ( ) => {
         </Col>
 
         <Col className="profileCol" xs={5}>
-            <NavLink to="/profile">
-          <img
-            className="profileIcon"
-            alt=""
-            src="https://icons-for-free.com/iconfiles/png/512/circle+face+human+profile+user+icon-1320086209603424640.png"
-          ></img>
+          <NavLink to="/profile">
+            <img
+              className="profileIcon"
+              alt=""
+              src="https://icons-for-free.com/iconfiles/png/512/circle+face+human+profile+user+icon-1320086209603424640.png"
+            ></img>
           </NavLink>
           <h4 className="profileName">{user.username}</h4>
         </Col>
@@ -54,24 +59,7 @@ const Translation = ( ) => {
         <Col xs={2}></Col>
 
         <Col xs={8}>
-          <img
-            className="translationInputFieldImg"
-            alt=""
-            src="https://icons.iconarchive.com/icons/icons8/ios7/512/Computer-Hardware-Keyboard-icon.png"
-          ></img>
-          <input
-            type="text"
-            className="translationInputBar"
-            placeholder="Translate Text here"
-            onChange={(e) => handleInput(e)}
-          />
-          <Button className="translationInputSubmitBtn" onClick={finalizeInput}>
-            <img
-              className="translationInputSubmitBtnArrow"
-              alt=""
-              src="https://www.seekpng.com/png/full/447-4470967_white-arrow-without-background.png"
-            ></img>
-          </Button>
+            <OrdersForm onTranslate={handleTranslatorClicked} />
         </Col>
         <Col xs={2}></Col>
       </Row>
