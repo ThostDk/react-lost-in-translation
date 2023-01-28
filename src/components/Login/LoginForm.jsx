@@ -9,6 +9,7 @@ import { storageSave } from "../../utils/storage";
 import { STORAGE_KEY_USER } from "../../const/storageKey";
 import { useUser } from "../../context/UserContext";
 
+// set some configuration properties for username
 const usernameConfig = {
   required: true,
   minLength: 4,
