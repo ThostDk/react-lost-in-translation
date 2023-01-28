@@ -12,9 +12,11 @@ import { NavLink } from "react-router-dom";
 import withAuth from "../hoc/withAuth"
 
 const Translation = () => {
+  //hooks
   const [translationResponse, setTranslationResponse] = useState("");
   const { user, setUser } = useUser();
 
+  // reset the selected translation in the user API, as it should be empty after execution
   const resetSelection = async()=>{
     const [error, UpdatedUser] = await selectedTranslationAdd(user, "");
       if (error !== null) {
@@ -24,6 +26,8 @@ const Translation = () => {
       setUser(UpdatedUser);
   }
 
+  //as the user select an sentence from history in profile... it shall be fetch and translate 
+  //on the translation page
   const getSelectedTranslationHistory = async (user) => {
     if (user.selectedTranslation !== "") {
       setTranslationResponse(user.selectedTranslation);
@@ -31,10 +35,14 @@ const Translation = () => {
     }
   };
 
+  //side Effects
   useEffect(() => {
     getSelectedTranslationHistory(user);
   });
 
+  //event handler
+  // taking the input sentence and make the translation 
+  //and add it to the API and output page
   const handleTranslatorClicked = async (sentence) => {
     if (sentence.length === 0) return;
     setTranslationResponse(sentence);

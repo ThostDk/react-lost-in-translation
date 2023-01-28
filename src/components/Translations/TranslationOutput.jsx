@@ -21,14 +21,14 @@ const TranslationOutput = (props) => {
                 "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
             }
             else if(letter.match(/[a-z1-9]/i)){
-              path = "./Resources/Handsigns/" + letter + ".png";
+              path = "./Resources/HandSigns/" + letter + ".png";
             }
             else{
-               path = "./Resources/Handsigns/!.png";
+               path = "./Resources/HandSigns/!.png";
             }
             return (
               <div key={index}>
-                <img className="handsignImg" alt="" src={path}></img>
+                <img className="handSignImg" alt="" src={path}></img>
               </div>
             );
           })}

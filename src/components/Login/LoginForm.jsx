@@ -1,16 +1,13 @@
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import "./Login.css";
 import { loginUser } from "../../api/User";
 import { storageSave } from "../../utils/storage";
 import { STORAGE_KEY_USER } from "../../const/storageKey";
 import { useUser } from "../../context/UserContext";
-import { useNavigate } from "react-router-dom";
 
 const usernameConfig = {
   required: true,
@@ -29,7 +26,6 @@ const LoginForm = () => {
 
   // Local State
   const [loading, setLoading] = useState(false);
-  const [apiError, setApiError] = useState(false);
 
   //side effects
   useEffect(() => {
@@ -45,7 +41,7 @@ const LoginForm = () => {
     setLoading(true);
     const [error, userResponse] = await loginUser(username);
     if (error!==null) {
-        setApiError(error);  
+        alert(error); 
     }
     if (userResponse !== null) {
         storageSave(STORAGE_KEY_USER,userResponse);
