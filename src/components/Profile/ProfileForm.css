@@ -1,5 +1,5 @@
 .profilePageContainer{
-    background-color: rgb(255, 166, 65);
+    background-color: rgb(255, 166, 65)!important;
     padding-top: 5px;
     padding-bottom: 0px;
     
@@ -213,7 +213,7 @@
     width: 30px;
     height: 30px;
 }
-.handSignImg{
+.handsignImg{
     float:left;
     width:50px;
     height: 50px;
