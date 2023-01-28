@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./TranslationForm.css";
+import "./Translation.css";
 
 const TranslationForm = ({ onTranslate }) => {
   const { register, handleSubmit } = useForm();

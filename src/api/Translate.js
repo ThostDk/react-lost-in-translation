@@ -8,8 +8,6 @@ const apiURL = process.env.REACT_APP_API_URL;
 const shiftArray = (user, payload) =>{
   let tmpArr = user.translations;
   tmpArr.shift();
-  console.log("tmpArr:"+tmpArr)
-  console.log("payload:"+payload)
   tmpArr.push(payload);
    return tmpArr;
 }

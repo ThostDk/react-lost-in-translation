@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../components/Profile/ProfileForm.css";
+import "../components/Profile/Profile.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,8 +12,9 @@ import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
 import { selectedTranslationAdd } from "../api/Translate";
 import { translationClearHistory } from "../api/Translate";
+
 // The profile component which displays the user profile with an overview of its translation history
-const Profile = (props) => {
+const Profile = ( ) => {
   const [showLogoutMenu, setLogoutMenuBool] = useState(false);
   const { user, setUser } = useUser();
 

@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./LoginForm.css";
+import "./Login.css";
 import { loginUser } from "../../api/User";
 import { storageSave } from "../../utils/storage";
 import { STORAGE_KEY_USER } from "../../const/storageKey";

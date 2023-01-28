@@ -1,19 +1,15 @@
-import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../components/Translations/TranslationForm.css";
+import "../components/Translations/Translation.css";
+import {Container, Col, Row} from "react-bootstrap";
+import TranslationForm from "../components/Translations/TranslationForm";
+import TranslationOutput from "../components/Translations/TranslationOutput";
+import { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
-import { translationAdd,selectedTranslationAdd } from "../api/Translate";
+import { selectedTranslationAdd, translationAdd } from "../api/Translate"
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
-import { TranslationForm } from "../components/Translations/TranslationForm";
-import { TranslationOutput } from "../components/Translations/TranslationOutput";
-import { withAuth } from "../hoc/withAuth";
-
+import { NavLink } from "react-router-dom";
+import withAuth from "../hoc/withAuth"
 
 const Translation = () => {
   const [translationResponse, setTranslationResponse] = useState("");
