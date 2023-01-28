@@ -1,12 +1,10 @@
 import "./App.css";
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./views/Login";
 import Translation from "./views/Translation";
 import Profile from "./views/Profile";
 
 function App() {
-  const [response, setResponse] = useState("");
 
   return (
     <BrowserRouter>

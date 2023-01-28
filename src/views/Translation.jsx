@@ -1,22 +1,24 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/Translations/TranslationForm.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import TranslationOutput from "../components/Translations/TranslationOutput";
-import withAuth from "../hoc/withAuth";
 import { useUser } from "../context/UserContext";
-import { NavLink } from "react-router-dom";
-import { translationAdd } from "../api/Translate";
-import { selectedTranslationAdd } from "../api/Translate";
+import { translationAdd,selectedTranslationAdd } from "../api/Translate";
 import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
-import TranslationForm from "../components/Translations/TranslationForm";
+import { TranslationForm } from "../components/Translations/TranslationForm";
+import { TranslationOutput } from "../components/Translations/TranslationOutput";
+import { withAuth } from "../hoc/withAuth";
+
 
 const Translation = () => {
   const [translationResponse, setTranslationResponse] = useState("");
   const { user, setUser } = useUser();
+
   const resetSelection = async()=>{
     const [error, UpdatedUser] = await selectedTranslationAdd(user, "");
       if (error !== null) {
@@ -25,17 +27,20 @@ const Translation = () => {
       storageSave(STORAGE_KEY_USER, UpdatedUser);
       setUser(UpdatedUser);
   }
+
   const getSelectedTranslationHistory = async (user) => {
     if (user.selectedTranslation !== "") {
       setTranslationResponse(user.selectedTranslation);
       resetSelection();
     }
   };
+
   useEffect(() => {
     getSelectedTranslationHistory(user);
   });
 
   const handleTranslatorClicked = async (sentence) => {
+    if (sentence.length === 0) return;
     setTranslationResponse(sentence);
     const [error, UpdatedUser] = await translationAdd(user, sentence);
     if (error !== null) {
