@@ -1,39 +1,41 @@
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../components/Profile/ProfileForm.css";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-import { useNavigate } from "react-router";
+import Button from "react-bootstrap/Button";
+import withAuth from "../hoc/withAuth";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../context/UserContext";
-import { storageDelete, storageSave } from "../utils/storage";
+import { storageSave } from "../utils/storage";
 import { STORAGE_KEY_USER } from "../const/storageKey";
-import withAuth from "../hoc/withAuth";
 import { selectedTranslationAdd } from "../api/Translate";
 import { translationClearHistory } from "../api/Translate";
+// The profile component which displays the user profile with an overview of its translation history
 const Profile = (props) => {
   const [showLogoutMenu, setLogoutMenuBool] = useState(false);
   const { user, setUser } = useUser();
 
+  // Boolean function for toggling between displaying the logout button by returning the opposite value when clicking on the profile icon.
   const showLogout = () => {
     return showLogoutMenu ? setLogoutMenuBool(false) : setLogoutMenuBool(true);
   };
+  // Function for logging out the user when clicking the log out button.
   const handleLogOut = () => {
     if (window.confirm("Are you sure you want to logout?")) {
       storageSave(STORAGE_KEY_USER, null);
       setUser(null);
     }
   };
-  //get translation history from API
+  // Gets translation history from the current user API
   let translationHistory = user.translations;
-
+  // function that clears the users translation history when clicking the clear history button
   const clearTranslationHistory = async () => {
     if (!window.confirm("Are you sure? \nThis can not be undone!")) {
       return;
     }
+    // tries to call the api function for clearing the users translation list
     const [clearError] = await translationClearHistory(user.id);
     if (clearError !== null) {
       return;
@@ -42,11 +44,13 @@ const Profile = (props) => {
       ...user,
       translations: [],
     };
+    // if it succeed then the session storage & current user will point to the updated user with the now empty history
     storageSave(STORAGE_KEY_USER, updatedUser);
     setUser(updatedUser);
   };
 
-  const goToTranslation = async (translation) => {
+  // function that sets the users selected translation that is to be displayed to the clicked history translation
+  const setSelectedTranslation = async (translation) => {
     const [error, UpdatedUser] = await selectedTranslationAdd(
       user,
       translation
@@ -80,13 +84,10 @@ const Profile = (props) => {
             alt="profileImg"
             src="https://icons-for-free.com/iconfiles/png/512/circle+face+human+profile+user+icon-1320086209603424640.png"
           ></img>
-          {showLogoutMenu ? (
-            <h4 onClick={handleLogOut} className="profileLogOut">
-              Log Out
-            </h4>
-          ) : (
-            <h4 className="profileName">{user.username}</h4>
-          )}
+          {/* Toggle between showing/hiding the logout button when clicking the profile icon */}
+          {showLogoutMenu ? 
+            (<h4 onClick={handleLogOut} className="profileLogOut">Log Out</h4>) 
+          : (<h4 className="profileName">{user.username}</h4>)}
         </Col>
         <Col xs={2}></Col>
       </Row>
@@ -96,7 +97,7 @@ const Profile = (props) => {
 
         <Col xs={8} className="translationHistoryBox">
           <h3 className="translationHistoryText">Translation History</h3>
-
+            {/* goes through every user translation history element and displays it in the history box   */}
           {translationHistory.map((element, index) => {
             return (
               <div key={index}>
@@ -104,8 +105,8 @@ const Profile = (props) => {
                   <Col xs={12}>
                     <NavLink to="/translator">
                       <Button
-                        className="goTotranslationBtn"
-                        onClick={() => goToTranslation(element)}
+                        className="seeSelectedTranslationBtn"
+                        onClick={() => setSelectedTranslation(element)}
                       >
                         <img
                           className="translationInputSubmitBtnArrow"
@@ -114,7 +115,9 @@ const Profile = (props) => {
                         ></img>
                       </Button>
                     </NavLink>
-                    <h4 className="goTotranslationTextField">{element}</h4>
+                    <h4 className="seeSelectedTranslationTextField">
+                      {element}
+                    </h4>
                   </Col>
                 </Row>
               </div>
@@ -123,15 +126,15 @@ const Profile = (props) => {
           <Row>
             <Col xs={6}>
               <NavLink to="/translator">
-                <Button className="goToTranslationBtn">Go to Translation</Button>
+                <Button 
+                className="goToTranslationPageBtn">Go to Translation
+                </Button>
               </NavLink>
             </Col>
             <Col xs={6}>
               <Button
                 className="clearHistoryBtn"
-                onClick={clearTranslationHistory}
-              >
-                CLEAR HISTORY
+                onClick={clearTranslationHistory}>CLEAR HISTORY
               </Button>
             </Col>
           </Row>

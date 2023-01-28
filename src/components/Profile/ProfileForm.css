@@ -55,6 +55,12 @@
     float: right;
     cursor: pointer;
 }
+.profileIcon:hover{
+    border-radius: 25px;
+    border: solid;
+    border-color:  rgb(132, 94, 194);
+    
+}
 .profileName{
   pointer-events: none;  
   color: white;
@@ -83,7 +89,8 @@
     margin-right: -50px;
 }
 .profileLogOut:hover{
-    color: rgb(105, 105, 105);
+    font-size:large;
+    color: rgb(255, 174, 174);
     text-shadow: 2px 2px 2px #ff0000;
     cursor: pointer;
 }
@@ -151,7 +158,7 @@
     font-family:'Courier New', Courier, monospace;
     
 }
-.goTotranslationBtn{
+.seeSelectedTranslationBtn{
     width: 50px;
     float: right;
     height: 50px;
@@ -160,10 +167,10 @@
     border-width: 0px !important;
     border-radius: 25px!important;
 }
-.goTotranslationBtn:hover{
+.seeSelectedTranslationBtn:hover{
     background-color: rgb(255, 166, 65) !important;
 }
-.goTotranslationTextField{
+.seeSelectedTranslationTextField{
     color: rgb(132, 94, 194);
     font-size: medium;
     font-weight: 800;
@@ -220,7 +227,7 @@
 .clearHistoryBtn:hover{
     background-color: rgb(255, 0, 0);
 }
-.goToTranslationBtn{
+.goToTranslationPageBtn{
     background-color: rgb(111, 194, 94);
     width: 100%;
     border-width: 0px !important;
